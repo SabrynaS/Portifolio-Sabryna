@@ -114,7 +114,7 @@ export interface Education {
 
 export const personalInfo: PersonalInfo = {
   name: "Sabryna Rodrigues Araújo",
-  title: "Análise de Software • Desenvolvimento Web • Testes Exploratórios",
+  title: "Analista de Software • Desenvolvimento Web • Testes de Software",
   subtitle: "Estudante de Ciência da Computação na UFMA, focada em análise, desenvolvimento e qualidade de software.",
   email: "sabrynarodrigues1313@gmail.com",
   github: "https://github.com/SabrynaS",
@@ -123,7 +123,7 @@ export const personalInfo: PersonalInfo = {
   whatsapp: "5598996219610", // Formato internacional sem +
   location: "São Luís, MA - Brasil",
   // TROQUE O ARQUIVO EM /public/profile.jpg PARA MUDAR A FOTO
-  profileImage: "/profile.jpg",
+  profileImage: "/profile.jpeg",
   initials: "SR",
 };
 
@@ -159,7 +159,7 @@ export const aboutMe = {
     "Análise e levantamento de requisitos",
     "Prototipagem (Figma) e documentação (UML/fluxos)",
     "Desenvolvimento web (front-end e back-end)",
-    "Testes exploratórios e reporte de achados",
+    "Testes de Software e identificação de melhorias",
   ],
 };
 
@@ -178,15 +178,15 @@ export const experiences: Experience[] = [
       "Prototipagem de alta fidelidade no Figma",
       "Desenvolvimento front-end com React, TypeScript e JavaScript",
       "Desenvolvimento back-end com Python e Flask",
-      "Aplicação de testes exploratórios nos sistemas desenvolvidos",
+      "Aplicação de Testes de Software nos sistemas desenvolvidos",
       "Atuação em projetos para clientes externos (ex.: TCE)",
     ],
-    tags: ["Análise", "UML", "Figma", "React", "TypeScript", "Python", "Flask", "Testes Exploratórios"],
+    tags: ["Análise", "UML", "Figma", "React", "TypeScript", "Python", "Flask", "Testes de Software"],
     current: true,
   },
   {
     id: "equatorial",
-    company: "Projeto Equatorial (Detecção de Ligações Irregulares)",
+    company: "Núcleo de Computação Aplicada (NCA/UFMA) - Equatorial Maranhão",
     role: "QA - Testes Exploratórios",
     period: "Dez/2024 – Fev/2025",
     description: [
@@ -202,14 +202,14 @@ export const experiences: Experience[] = [
     id: "petcomp",
     company: "PETComp (UFMA)",
     role: "Membro do Programa de Educação Tutorial",
-    period: "Abr/2023 – Atual",
+    period: "Abr/2023 – Out/2024",
     description: [
       "Desenvolvimento e manutenção de softwares",
       "Monitorias, escrita de artigos e trabalho em equipe",
       "Aprendizado e aplicação em desenvolvimento web",
     ],
     tags: ["Desenvolvimento Web", "Artigos", "Monitoria"],
-    current: true,
+    current: false,
   },
   {
     id: "multiplus",
@@ -302,10 +302,10 @@ export const projects: Project[] = [
 export const publications: Publication[] = [
   {
     id: "iceis-2025",
-    title: "Apply Prototype Exploratory Testing in a High Fidelity Prototype: An Experience Report",
+    title: "Applying Prototyping and Exploratory Testing to Ensure Software Quality in an Information System for Power Tampering Detection: An Experience Report",
     event: "2025 International Conference on Enterprise Information Systems (ICEIS)",
     year: 2025,
-    abstract: "Experience report sobre aplicação de testes exploratórios em protótipos de alta fidelidade.",
+    abstract: "Um relato de experiência sobre aplicação de testes exploratórios em um sistema de detecção de gambiarras eletricas, utilizando protótipos de alta fidelidade.",
     link: "https://www.scitepress.org/Papers/2025/134830/134830.pdf",
   },
 ];
@@ -335,7 +335,7 @@ export const skillCategories: SkillCategory[] = [
   {
     name: "Qualidade",
     skills: [
-      { name: "Testes Exploratórios", relatedTags: ["QA", "Testes"] },
+      { name: "Testes de Software", relatedTags: ["QA", "Testes"] },
     ],
   },
   {
@@ -393,7 +393,7 @@ export const navigation = [
 
 export const siteConfig = {
   title: "Sabryna Rodrigues | Portfólio",
-  description: "Portfólio de Sabryna Rodrigues Araújo - Analista de Software, Desenvolvedora Web e especialista em Testes Exploratórios.",
+  description: "Portfólio de Sabryna Rodrigues Araújo - Analista de Software, Desenvolvedora Web e especialista em Testes de Software.",
   // Link para download do CV (coloque o arquivo em /public/cv.pdf)
   cvDownloadUrl: "/cv.pdf",
   // Mensagem padrão do WhatsApp

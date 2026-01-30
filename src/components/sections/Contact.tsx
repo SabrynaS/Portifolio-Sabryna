@@ -119,10 +119,10 @@ export function Contact() {
               whileTap={{ scale: 0.98 }}
             >
               <Download className="h-5 w-5" />
-              Baixar CV
+              Baixar Currículo Digital
             </motion.a>
             <p className="text-xs text-muted-foreground mt-2">
-              (Adicione o arquivo cv.pdf na pasta /public)
+              (Atualizado em Janeiro 2026)
             </p>
           </motion.div>
         </motion.div>
