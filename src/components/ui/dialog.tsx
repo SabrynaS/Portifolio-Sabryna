@@ -4,7 +4,65 @@ import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const Dialog = DialogPrimitive.Root;
+const Dialog = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> & {
+    children?: React.ReactNode;
+  }
+>(({ open, onOpenChange, children, ...props }, ref) => {
+  React.useEffect(() => {
+    if (open) {
+      // Bloqueia o scroll
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      // Previne scroll com wheel
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+      };
+
+      // Previne scroll com touch
+      const handleTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+
+      // Previne scroll com arrow keys e Page Down/Up
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (
+          e.key === 'ArrowDown' ||
+          e.key === 'ArrowUp' ||
+          e.key === 'PageDown' ||
+          e.key === 'PageUp' ||
+          e.key === ' '
+        ) {
+          e.preventDefault();
+        }
+      };
+
+      document.addEventListener('wheel', handleWheel, { passive: false });
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.removeEventListener('wheel', handleWheel);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('keydown', handleKeyDown);
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      };
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  }, [open]);
+
+  return (
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange} {...props}>
+      {children}
+    </DialogPrimitive.Root>
+  );
+});
+Dialog.displayName = "Dialog";
 
 const DialogTrigger = DialogPrimitive.Trigger;
 

@@ -7,11 +7,27 @@ import { navigation, personalInfo } from "@/data/portfolio";
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#inicio");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Detectar qual seção está visível
+      const sections = navigation.map((item) => item.href);
+      const currentSection = sections.find((section) => {
+        const element = document.querySelector(section);
+        if (!element) return false;
+
+        const rect = element.getBoundingClientRect();
+        return rect.top <= 150 && rect.bottom >= 150;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -59,11 +75,19 @@ export function Header() {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
+              className={`px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all relative group ${
+                activeSection === item.href ? "text-foreground" : ""
+              }`}
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2 }}
             >
               {item.label}
+              {/* Underline que aparece no hover e fica ativo */}
+              <span
+                className={`absolute bottom-0 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                  activeSection === item.href ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              />
             </motion.a>
           ))}
         </div>
@@ -108,9 +132,21 @@ export function Header() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                  className={`px-4 py-3 text-sm font-medium rounded-lg transition-all relative ${
+                    activeSection === item.href
+                      ? "text-foreground bg-muted/50"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}
                 >
                   {item.label}
+                  {/* Barrinha esquerda para mobile */}
+                  {activeSection === item.href && (
+                    <motion.span
+                      layoutId="activeBar"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-primary rounded-r-full"
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
                 </motion.a>
               ))}
             </div>
